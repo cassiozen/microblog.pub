@@ -183,11 +183,11 @@ def _check_0rtt_early_data(request: Request) -> None:
 app = FastAPI(
     docs_url=None, redoc_url=None, dependencies=[Depends(_check_0rtt_early_data)]
 )
-app.mount(
-    "/custom_emoji",
-    StaticFiles(directory="data/custom_emoji"),
-    name="custom_emoji",
-)
+# app.mount(
+#     "/custom_emoji",
+#     StaticFiles(directory="data/custom_emoji"),
+#     name="custom_emoji",
+# )
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 app.include_router(admin.router, prefix="/admin")
 app.include_router(admin.unauthenticated_router, prefix="/admin")

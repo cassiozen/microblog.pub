@@ -120,7 +120,7 @@ class Config(pydantic.BaseModel):
 def load_config() -> Config:
     try:
         return Config.parse_obj(
-            tomli.loads((ROOT_DIR / "data" / _CONFIG_FILE).read_text())
+            tomli.loads((ROOT_DIR / "config" / _CONFIG_FILE).read_text())
         )
     except FileNotFoundError:
         raise ValueError(
@@ -178,7 +178,7 @@ DEBUG = CONFIG.debug
 DB_PATH = CONFIG.sqlalchemy_database or ROOT_DIR / "data" / "microblogpub.db"
 SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}"
 KEY_PATH = (
-    (ROOT_DIR / CONFIG.key_path) if CONFIG.key_path else ROOT_DIR / "data" / "key.pem"
+    (ROOT_DIR / CONFIG.key_path) if CONFIG.key_path else ROOT_DIR / "config" / "key.pem"
 )
 EMOJIS = "😺 😸 😹 😻 😼 😽 🙀 😿 😾"
 if CONFIG.emoji:

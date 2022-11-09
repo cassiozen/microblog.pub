@@ -17,7 +17,7 @@ def _load_emojis(root_dir: Path, base_url: str) -> None:
         return
     for dir_name, path in (
         (root_dir / "app" / "static" / "emoji", "static/emoji"),
-        (root_dir / "data" / "custom_emoji", "custom_emoji"),
+        # (root_dir / "data" / "custom_emoji", "custom_emoji"),
     ):
         for emoji in dir_name.iterdir():
             mt = mimetypes.guess_type(emoji.name)[0]

@@ -52,10 +52,6 @@ def compile_scss(ctx, watch=False):
     else:
         shutil.copy2(favicon_file, "app/static/favicon.ico")
 
-    theme_file = Path("data/_theme.scss")
-    if not theme_file.exists():
-        theme_file.write_text("// override vars for theming here")
-
     if watch:
         run("boussole watch", echo=True)
     else:
