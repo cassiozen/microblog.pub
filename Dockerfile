@@ -21,13 +21,9 @@ RUN poetry install --only main
 
 FROM python-base as production
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends libjpeg-dev libxslt1-dev libxml2-dev libxslt-dev
-RUN groupadd --gid 1000 microblogpub \
-  && useradd --uid 1000 --gid microblogpub --shell /bin/bash microblogpub
+RUN apt-get install -y --no-install-recommends libjpeg-dev libxslt1-dev libxml2-dev libxslt-dev tree
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 COPY . /app/
-RUN chown -R 1000:1000 /app
-USER microblogpub
 WORKDIR /app
 EXPOSE 8000
 CMD ["./misc/docker_start.sh"]
