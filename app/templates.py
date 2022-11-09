@@ -1,4 +1,3 @@
-import base64
 from datetime import datetime
 from datetime import timezone
 from functools import lru_cache
@@ -39,7 +38,7 @@ from app.utils.highlight import HIGHLIGHT_CSS
 from app.utils.highlight import highlight
 
 _templates = Jinja2Templates(
-    directory="app/templates",
+    directory=["data/templates", "app/templates"],  # type: ignore  # bad typing
     trim_blocks=True,
     lstrip_blocks=True,
 )
@@ -425,3 +424,4 @@ _templates.env.globals["BASE_URL"] = config.BASE_URL
 _templates.env.globals["HIDES_FOLLOWERS"] = config.HIDES_FOLLOWERS
 _templates.env.globals["HIDES_FOLLOWING"] = config.HIDES_FOLLOWING
 _templates.env.globals["NAVBAR_ITEMS"] = config.NavBarItems
+_templates.env.globals["ICON_URL"] = config.CONFIG.icon_url
