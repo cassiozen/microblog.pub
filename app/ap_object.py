@@ -280,6 +280,9 @@ class Attachment(BaseModel):
     proxied_url: str | None = None
     resized_url: str | None = None
 
+    width: int | None = None
+    height: int | None = None
+
     @property
     def mimetype(self) -> str:
         mimetype = self.media_type

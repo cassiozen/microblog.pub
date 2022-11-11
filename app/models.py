@@ -251,6 +251,8 @@ class OutboxObject(Base, BaseObject):
                         "mediaType": attachment.upload.content_type,
                         "name": attachment.alt or attachment.filename,
                         "url": url,
+                        "width": attachment.upload.width,
+                        "height": attachment.upload.height,
                         "proxiedUrl": url,
                         "resizedUrl": BASE_URL
                         + (
